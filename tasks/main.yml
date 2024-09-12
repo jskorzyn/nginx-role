@@ -9,8 +9,9 @@
   ansible.builtin.template:
     src: default.conf
     dest: /etc/nginx/conf.d/default.conf
+    mode: '0644'
 
-- name: insert firewalld rule for nginx
+- name: Insert firewalld rule for nginx
   ansible.posix.firewalld:
     port: "{{ nginx_port }}/tcp"
     permanent: true
