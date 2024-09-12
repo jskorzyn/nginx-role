@@ -9,7 +9,7 @@
   ansible.builtin.template:
     src: default.conf
     dest: /etc/nginx/conf.d/default.conf
-    mode: '0644'
+    mode: "0644"
 
 - name: Insert firewalld rule for nginx
   ansible.posix.firewalld:
