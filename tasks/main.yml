@@ -1,21 +1,21 @@
 ---
 - name: Install nginx
-  yum: 
+  ansible.builtin.yum:
     name: nginx
     state: present
 
 - name: Copy nginx configuration for wordpress
-  template: 
-    src: default.conf 
-    dest: /etc/nginx/conf.d/default.conf
   notify: restart nginx
+  ansible.builtin.template:
+    src: default.conf
+    dest: /etc/nginx/conf.d/default.conf
 
 - name: insert firewalld rule for nginx
-  firewalld: 
-    port: "{{ nginx_port }}/tcp" 
-    permanent: yes 
-    state: enabled 
-    immediate: yes
+  ansible.posix.firewalld:
+    port: "{{ nginx_port }}/tcp"
+    permanent: true
+    state: enabled
+    immediate: true
 
 - name: Nginx service state
   ansible.builtin.service:
