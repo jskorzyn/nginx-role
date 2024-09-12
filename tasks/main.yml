@@ -17,7 +17,7 @@
     state: enabled
     immediate: true
 
-- name: mginx service state
+- name: Nginx service state
   ansible.builtin.service:
     name: nginx
     state: started
