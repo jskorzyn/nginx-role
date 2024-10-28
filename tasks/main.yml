@@ -5,7 +5,7 @@
     state: present
 
 - name: Copy nginx configuration for wordpress
-  notify: restart nginx
+  notify: Restart nginx
   ansible.builtin.template:
     src: default.conf
     dest: /etc/nginx/conf.d/default.conf
