@@ -5,11 +5,11 @@
     state: present
 
 - name: Copy nginx configuration for wordpress
-  notify: Restart nginx
   ansible.builtin.template:
     src: default.conf
     dest: /etc/nginx/conf.d/default.conf
     mode: "0644"
+  notify: Restart nginx  
 
 - name: Insert firewalld rule for nginx
   ansible.posix.firewalld:
